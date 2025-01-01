@@ -11,15 +11,16 @@ SUPPORTED_EXCHANGES = EXCHANGES_WITH_PASSPHRASE + EXCHANGES_WITHOUT_API_SECRET +
     Location.BITFINEX,
     Location.BITMEX,
     Location.BITSTAMP,
+    Location.BYBIT,
     Location.COINBASE,
     Location.GEMINI,
-    Location.ICONOMI,
-    Location.KRAKEN,
-    Location.INDEPENDENTRESERVE,
-    Location.POLONIEX,
-    Location.WOO,
-    Location.BYBIT,
     Location.HTX,
+    Location.ICONOMI,
+    Location.INDEPENDENTRESERVE,
+    Location.KRAKEN,
+    Location.POLONIEX,
+    Location.SWYFTX,
+    Location.WOO,
 )
 
 DEAD_EXCHANGES = (Location.FTX, Location.FTXUS, Location.BITTREX, Location.COINBASEPRO)

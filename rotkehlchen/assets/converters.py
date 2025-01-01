@@ -465,6 +465,18 @@ def asset_from_bitcoinde(bitcoinde: str) -> AssetWithOracles:
         default=bitcoinde,
     ))
 
+def asset_from_swyftx(swyftx: str) -> AssetWithOracles:
+    """May raise:
+    - DeserializationError
+    - UnsupportedAsset
+    - UnknownAsset
+    """
+    swyftx = swyftx.upper()
+    return symbol_to_asset_or_token(GlobalDBHandler.get_assetid_from_exchange_name(
+        exchange=Location.SWYFTX,
+        symbol=swyftx,
+        default=swyftx,
+    ))
 
 LOCATION_TO_ASSET_MAPPING: dict[Location, Callable[[str], AssetWithOracles]] = {
     Location.BINANCE: asset_from_binance,
@@ -483,5 +495,6 @@ LOCATION_TO_ASSET_MAPPING: dict[Location, Callable[[str], AssetWithOracles]] = {
     Location.WOO: asset_from_woo,
     Location.HTX: asset_from_htx,
     Location.BITCOINDE: asset_from_bitcoinde,
+    Location.SWYFTX: asset_from_swyftx,
     Location.EXTERNAL: asset_from_common_identifier,
 }

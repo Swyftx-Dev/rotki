@@ -30,6 +30,7 @@ from rotkehlchen.exchanges.kucoin import Kucoin
 from rotkehlchen.exchanges.manager import ExchangeManager
 from rotkehlchen.exchanges.okx import Okx
 from rotkehlchen.exchanges.poloniex import Poloniex
+from rotkehlchen.exchanges.swyftx import Swyftx
 from rotkehlchen.exchanges.utils import create_binance_symbols_to_pair
 from rotkehlchen.exchanges.woo import Woo
 from rotkehlchen.fval import FVal
@@ -828,6 +829,25 @@ def create_test_htx(
         msg_aggregator=msg_aggregator,
     )
 
+def create_test_swyftx(
+        database: DBHandler,
+        msg_aggregator: MessagesAggregator,
+        api_key: ApiKey | None = None,
+        secret: ApiSecret | None = None,
+) -> Swyftx:
+    if api_key is None:
+        api_key = make_api_key()
+    if secret is None:
+        secret = make_api_secret()
+
+    return Swyftx(
+        name='swyftx',
+        api_key=api_key,
+        secret=secret,
+        database=database,
+        msg_aggregator=msg_aggregator,
+    )
+
 
 def create_test_kucoin(
         database: DBHandler,
@@ -1097,6 +1117,13 @@ def try_get_first_exchange(
         exchange_manager: ExchangeManager,
         location: Literal[Location.KUCOIN],
 ) -> 'Kucoin | None':
+    ...
+
+@overload
+def try_get_first_exchange(
+        exchange_manager: ExchangeManager,
+        location: Literal[Location.SWYFTX],
+) -> Swyftx | None:
     ...
 
 
