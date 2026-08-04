@@ -22,7 +22,7 @@ beautifulsoup4==4.12.3
 maxminddb==2.6.2
 pywin32==306; sys_platform == 'win32'
 miniupnpc==2.2.8
-cryptography==44.0.0
+cryptography==50.0.0
 py-machineid==0.6.0
 more-itertools==10.5.0  # for peekable iterators
 regex==2024.11.6  # used for unicode information in detection of spam tokens
